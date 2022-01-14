@@ -1,0 +1,212 @@
+<head>
+    <script src="/module/js/leaflet.js"></script>
+    <script src="/module/js/jquery.js"></script>
+    <link href="/module/css/reset.css" rel="stylesheet"/>
+    <link href="/module/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/module/css/custom.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link href="/module/css/leaflet.css" rel="stylesheet"/>
+
+    <title>Test Phiraka - Ryan Pandu Prasetya</title>
+</head>
+<body class="position-relative">
+    <!-- Basemap -->
+    <div id="osm-map"></div>
+
+    <!-- Tab container -->
+    <div class="tab-container d-flex flex-row">
+        
+        <div class="tab-content-wrapper bg-white overflow-hidden">
+            <div class="tab-img position-relative"> 
+                <div class="close-tab-icon pointer rounded-lg bg-dark p-2 position-absolute">
+                    <img src="/asset/icon/icon-x.svg" width="12px"/>
+                </div>
+                <img src="/asset/img/jkt.jpg"/>
+            </div>
+    
+            <div class="tab-content-container">
+                <p class="tab-title-p px-2 pt-2">Indonesia</p>
+    
+                <hr class="w-100">
+                <div class="tab-icon-container d-flex flex-row">
+                    <div class="pointer d-flex flex-column justify-content-center align-items-center active mx-3">
+                        <div class="tab-icon-item bg-primary rounded-circle d-flex justify-content-center align-items-center">
+                            <img src="asset/icon/icon-route.svg"/>
+                        </div>
+                        <p class="text-primary mt-2 mb-0">Route</p>
+                    </div>
+    
+                    <div class="pointer d-flex flex-column justify-content-center align-items-center mx-3">
+                        <div class="tab-icon-item bg-primary-soft rounded-circle d-flex justify-content-center align-items-center">
+                            <img src="asset/icon/icon-save.svg"/>
+                        </div>
+                        <p class="text-primary mt-2 mb-0">Save</p>
+                    </div>
+    
+                    <div class="pointer d-flex flex-column justify-content-center align-items-center align-items-center mx-3">
+                        <div class="tab-icon-item bg-primary-soft rounded-circle d-flex justify-content-center align-items-center">
+                            <img src="asset/icon/icon-loc.svg"/>
+                        </div>
+                        <p class="text-primary mt-2 mb-0">Nearby</p>
+                    </div>
+    
+                    <div class="pointer d-flex flex-column justify-content-center align-items-center align-items-center mx-3">
+                        <div class="tab-icon-item bg-primary-soft rounded-circle d-flex justify-content-center align-items-center">
+                            <img src="asset/icon/icon-send.svg"/>
+                        </div>
+                        <p class="text-primary mt-2 mb-0">Send</p>
+                    </div>
+    
+                    <div class="pointer d-flex flex-column justify-content-center align-items-center align-items-center mx-3">
+                        <div class="tab-icon-item bg-primary-soft rounded-circle d-flex justify-content-center align-items-center">
+                            <img src="asset/icon/icon-share.svg"/>
+                        </div>
+                        <p class="text-primary mt-2 mb-0">Share</p>
+                    </div>
+                </div>
+                <hr class="w-100">
+
+                <div class="card mx-2 border-0">
+                    <div class="card-body p-3">
+                      <h6 class="card-subtitle mb-2 text-dark">Quick facts</h6>
+                      <p class="card-text">Indonesia, officially the Republic of Indonesia, is a country in Southeast Asia and Oceania between the Indian and Pacific oceans. It consists of over 17,000 islands, including Sumatra, Sulawesi, Java, and parts of Borneo and New Guinea. Wikipedia</p>
+                    </div>
+                </div>
+
+                <div class="photo-container px-2 mt-3">
+                    <p class="">Photos</p>
+
+                    <div class="d-flex flex-row w-100">
+                        <div class="img-item" style="background-image: url('/asset/img/img1.jpg')">
+                        </div>
+                        <div class="img-item" style="background-image: url('/asset/img/img1.jpg')">
+                        </div>
+                        <!-- <img src="/asset/img/jkt.jpg"/> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-open-close pointer position-relative d-flex justify-content-center align-items-center bg-white">
+            <i class="fas fa-chevron-left text-secondary"></i>
+        </div>
+    </div>
+
+    <!-- Search container -->
+    <div class="tab-search d-flex flex-row align-items-center">
+        <div class="search-content bg-white rounded-lg d-flex flex-row overflow-hidden px-3 mr-3">
+            <button class="mr-2" type="submit"><img src="/asset/icon/icon-search.svg" width="12px"/></button>
+            <input type="search" placeholder="Search location.."/>
+        </div>
+
+        <div class="postion-relative">
+            <div class="other-content bg-white rounded-lg d-flex flex-row align-items-center justify-content-between overflow-hidden px-3 pointer">
+                <div class="d-flex flex-row align-items-center mr-4">
+                    <i class="far fa-map mr-2"></i>
+                    <p class="mb-0">View Map</p>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="hidden-other-tab bg-white p-3 position-absolute rounded">
+                <div class="d-flex flex-row justify-content-between align-items-center">
+                    <p class="mb-0 text-primary">Simple</p>
+                    <i class="fas fa-check text-primary"></i>
+                </div>
+                <div class="d-flex flex-row justify-content-between align-items-center mt-3">
+                    <p class="mb-0">Satelite</p>
+                    <i class="fas fa-check d-none"></i>
+                </div>
+                <div class="d-flex flex-row justify-content-between align-items-center mt-3">
+                    <p class="mb-0">Dark</p>
+                    <i class="fas fa-check d-none"></i>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script>
+
+    // Basemap
+    var element = document.getElementById('osm-map');
+    element.style = 'height:100vh;';
+    var map = L.map(element);
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    }).addTo(map);
+    var target = L.latLng('-2.55', '118.02');
+    map.setView(target, 4.5);
+    L.marker(target).addTo(map);
+    // Zoom control position
+    function addControlPlaceholders(map) {
+        var corners = map._controlCorners,
+            l = 'leaflet-',
+            container = map._controlContainer;
+
+        function createCorner(vSide, hSide) {
+            var className = l + vSide + ' ' + l + hSide;
+
+            corners[vSide + hSide] = L.DomUtil.create('div', className, container);
+        }
+
+        createCorner('verticalcenter', 'left');
+        createCorner('verticalcenter', 'right');
+    }
+    addControlPlaceholders(map);
+
+    map.zoomControl.setPosition('verticalcenterright');
+    L.control.scale({position: 'verticalcenterright'}).addTo(map);
+
+
+    // Tab content collapse 
+    closeTab();
+    tabCollapsed();
+    tabMapView();
+
+    var tabMapClicked = 0;
+    function tabMapView(){
+        $('.other-content').click(function(){
+            if(tabMapClicked == 0){
+                $('.hidden-other-tab').show();
+                tabMapClicked = 1;
+            }else{
+                $('.hidden-other-tab').hide();
+                tabMapClicked =  0;
+            }
+        });
+    }
+
+    var tabClicked = 0;
+    function tabCollapsed(){
+        $('.button-open-close').click(function(){
+            if(tabClicked == 0){
+                $('.tab-container').addClass('close-tab-animation');
+                $('.tab-container').removeClass('open-tab-animation');
+                $('.button-open-close i').removeClass('fa-chevron-left');
+                $('.button-open-close i').addClass('fa-chevron-right');
+                tabClicked = 1;
+            }else{
+                $('.tab-container').addClass('open-tab-animation');
+                 $('.tab-container').removeClass('close-tab-animation');
+                 $('.button-open-close i').removeClass('fa-chevron-right');
+                $('.button-open-close i').addClass('fa-chevron-left');
+                 tabClicked = 0;
+            }
+        });
+    }
+
+    function closeTab(){
+        $('.close-tab-icon').click(function(){
+            $('.tab-container').addClass('close-tab-animation');
+            $('.tab-container').removeClass('open-tab-animation');
+            $('.button-open-close i').removeClass('fa-chevron-left');
+                $('.button-open-close i').addClass('fa-chevron-right');
+                tabClicked = 1;
+        });
+    }
+    </script>
+</body>
+
